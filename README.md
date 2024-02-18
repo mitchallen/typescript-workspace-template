@@ -16,7 +16,23 @@ To use this template:
 To use the `Taskfile.yml` file in the root of the project:
 * Vist https://taskfile.dev/ for install instructions
 * Run `task` to get a list of options
-* Example: `task test-clean-all` to clean, build and test all packages
+* Run `task test-clean-all` to clean, build and test all packages
+
+### Verify everything:
+
+To verify everything still works:
+
+* Save all files in the code editor
+* Run this command:
+```sh
+task test-clean-all
+```
+
+That command will:
+
+* Verify all dependencies are in place
+* Verify build order works
+* Verify all functionality still works
 
 ### Test
 
@@ -37,10 +53,9 @@ Test one package
  npm run test -w @mitchallen/alpha 
 ```
 
-
 ### Order workspace via dep
 
-Due to dependency order, core has to come first
+Due to dependency order, core has to come first:
 
 ```sh
   "workspaces": [
@@ -49,6 +64,9 @@ Due to dependency order, core has to come first
     "packages/beta"
   ]
 ```
+
+* This is why you don't have to put references in your tsconfig files. 
+* It's also why you don't need to use the `tsc -b` flag.
 
 ### Init a modules
 
@@ -96,6 +114,41 @@ npm run clean:all
 
 npm run clean -ws --if-present
 ```
+
+* * * 
+
+## Remove example packages and scope
+
+The example packages can be removed.
+
+* Removed them from the `./packages` folder.
+* Remove them from the root `package.json` `workspaces` array:
+
+```js
+  "workspaces": [
+    "packages/core",
+    "packages/alpha",
+    "packages/beta"
+  ]
+```
+
+## Update scope
+
+* Replace my scope (`@mitchallen`) with your scope in the root `tsconfig.json` file:
+
+```js
+{
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@mitchallen/*": [
+        "./*/src"
+      ]
+    }
+  }
+}
+```
+
 
 * * *
 

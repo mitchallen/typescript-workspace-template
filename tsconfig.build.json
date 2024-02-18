@@ -18,10 +18,5 @@
     "node_modules",
     "dist",
     "test"
-  ],
-  "references": [
-    { "path": "./packages/alpha" },
-    { "path": "./packages/beta" },
-    { "path": "./packages/core" },
   ]
 }

@@ -28,12 +28,26 @@ tasks:
       - npm run build:all
     silent: true
 
+  build-one:
+    # task build-one -- @mitchallen/alpha
+    desc: Build one - task build-one -- @mitchallen/alpha
+    cmds:
+      - npm run build -w {{.CLI_ARGS}}
+    silent: false
+
   clean-all:
     desc: Clean all packages
     cmds:
       - echo "===== CLEAN ALL ====="
       - npm run clean:all
     silent: true
+
+  clean-one:
+    # task clean-one -- @mitchallen/alpha
+    desc: Build clean - task clean-one -- @mitchallen/alpha
+    cmds:
+      - npm run clean -w {{.CLI_ARGS}}
+    silent: false
 
   test-all:
     desc: Test all packages
@@ -48,9 +62,12 @@ tasks:
     deps: [clean-all, test-all]
     silent: true
 
-  test-one-example:
-    desc: Test one package example
+  test-one:
+    # task test-one -- @mitchallen/alpha
+    desc: Test one - task test-one -- @mitchallen/alpha
     cmds:
-      - npm run test -w @mitchallen/alpha 
+      - npm run test -w {{.CLI_ARGS}}
     silent: false
+
+
 

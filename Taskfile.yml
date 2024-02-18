@@ -1,0 +1,56 @@
+# Author: Mitch Allen
+# File Taskfile.yml
+
+# See: https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+
+  # list all tasks (even those without a desc)
+  # default: task --list-all
+
+  # only list tasks with a desc
+  default: task --list
+
+  hello:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  build-all:
+    desc: Build all packages
+    cmds:
+      - echo "===== BUILD ALL ====="
+      - npm run build:all
+    silent: true
+
+  clean-all:
+    desc: Clean all packages
+    cmds:
+      - echo "===== CLEAN ALL ====="
+      - npm run clean:all
+    silent: true
+
+  test-all:
+    desc: Test all packages
+    deps: [build-all]
+    cmds:
+      - echo "===== TEST ALL ====="
+      - npm test -ws --if-present
+    silent: true
+
+  test-clean-all:
+    desc: Clean and test all packages
+    deps: [clean-all, test-all]
+    silent: true
+
+  test-one-example:
+    desc: Test one package example
+    cmds:
+      - npm run test -w @mitchallen/alpha 
+    silent: false
+

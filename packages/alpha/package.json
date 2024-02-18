@@ -1,0 +1,28 @@
+{
+  "name": "@mitchallen/alpha",
+  "version": "0.0.1",
+  "description": "Test package alpha",
+  "main": "dist/index.js",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist && rm tsconfig.build.tsbuildinfo || true",
+    "test": "cucumber-js"
+  },
+  "author": "Mitch Allen",
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {
+    "@mitchallen/core": "^0.0.1"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.3.1",
+    "@types/chai": "^4.3.11",
+    "@types/cucumber": "^7.0.0",
+    "chai": "^5.0.3",
+    "ts-node": "^10.9.2"
+  }
+}

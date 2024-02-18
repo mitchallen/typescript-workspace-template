@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "incremental": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "composite": true
+  },
+  "include": [
+    "./src/**/*.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test"
+  ],
+  "references": [
+    { "path": "./packages/alpha" },
+    { "path": "./packages/beta" },
+    { "path": "./packages/core" },
+  ]
+}

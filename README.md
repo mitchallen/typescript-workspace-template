@@ -11,6 +11,41 @@ To use this template:
 2. Clone the repo to your machine
 3. Run `npm install`
 
+### Use the template from the command line
+
+This command will:
+
+* Create a private GitHub repo from this templete
+* Create a local clone in a subfolder 
+
+Steps:
+
+* Create and change to a parent folder
+* Run this command:
+```sh
+gh repo create my-workspace \
+ --private --clone --template \
+ https://github.com/mitchallen/typescript-workspace-template.git
+```
+* Change to the cloned folder:
+```sh
+cd my-workspace
+```
+* Install the dependencies:
+```sh
+npm install
+```
+* Assuming task is installed (see build tools below), run this command:
+```sh
+task test-clean-all
+```
+* Verify everything works
+* Confirm you have a new private repo on GitHub with the same name
+* Check the remote references:
+```sh
+git remote -v
+```
+
 ### Build Tools
 
 To use the `Taskfile.yml` file in the root of the project:

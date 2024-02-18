@@ -46,6 +46,8 @@ task test-clean-all
 git remote -v
 ```
 
+* * *
+
 ### Build Tools
 
 To use the `Taskfile.yml` file in the root of the project:
@@ -69,6 +71,8 @@ That command will:
 * Verify build order works
 * Verify all functionality still works
 
+* * *
+
 ### Test
 
 ```sh
@@ -87,6 +91,8 @@ Test one package
 ```sh
  npm run test -w @mitchallen/alpha 
 ```
+
+* * *
 
 ### Order workspace via dep
 
@@ -183,7 +189,6 @@ The example packages can be removed.
   }
 }
 ```
-
 
 * * *
 

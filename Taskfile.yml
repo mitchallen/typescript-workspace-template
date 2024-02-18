@@ -77,7 +77,13 @@ tasks:
       - npm init --scope=@{{.SCOPE}} -w ./packages/{{.CLI_ARGS}} -y
       - npm install --save-dev @cucumber/cucumber ts-node @types/cucumber -w @{{.SCOPE}}/{{.CLI_ARGS}}
       - npm install --save-dev chai @types/chai -w @{{.SCOPE}}/{{.CLI_ARGS}}
+      # TODO - add steps to update scripts, etc
     silent: false
+    # jq check added for future expansion
+    preconditions:
+      - sh: jq --version > /dev/null
+        msg: "jq not installed"
+
 
 
 

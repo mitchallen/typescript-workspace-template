@@ -7,6 +7,7 @@ version: '3'
 
 vars:
   GREETING: Hello, World!
+  SCOPE: mitchallen # change for your npm scope
 
 tasks:
 
@@ -67,6 +68,15 @@ tasks:
     desc: Test one - task test-one -- @mitchallen/alpha
     cmds:
       - npm run test -w {{.CLI_ARGS}}
+    silent: false
+
+  add-package:
+    # task add-package -- delta
+    desc: Add a workspace package - task add-package -- delta
+    cmds:
+      - npm init --scope=@{{.SCOPE}} -w ./packages/{{.CLI_ARGS}} -y
+      - npm install --save-dev @cucumber/cucumber ts-node @types/cucumber -w @{{.SCOPE}}/{{.CLI_ARGS}}
+      - npm install --save-dev chai @types/chai -w @{{.SCOPE}}/{{.CLI_ARGS}}
     silent: false
 
 

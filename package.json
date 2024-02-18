@@ -8,7 +8,11 @@
     "pretest:all": "npm run build:all",
     "test:all": "npm test -ws --if-present"
   },
-  "keywords": ["typescript", "workspace", "monorepo"],
+  "keywords": [
+    "typescript",
+    "workspace",
+    "monorepo"
+  ],
   "author": "Mitch Allen <https://mitchallen.com>",
   "license": "MIT",
   "devDependencies": {

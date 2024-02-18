@@ -71,6 +71,23 @@ That command will:
 * Verify build order works
 * Verify all functionality still works
 
+### GitHub Codespaces
+
+To use the `task` command line in GitHub codespaces:
+
+* In the codespace terminal window, run this command:
+```sh
+npm install -g @go-task/cli
+```
+* Then run task:
+```sh
+task
+```
+* Make sure everything works:
+```sh
+task test-clean-all
+```
+
 * * *
 
 ### Test

@@ -2,7 +2,6 @@
   "name": "typescript-workspace-template",
   "version": "1.0.0",
   "description": "typescript-workspace-template",
-  "main": "index.js",
   "scripts": {
     "build:all": "npm run build -ws --if-present",
     "clean:all": "npm run clean -ws --if-present",
@@ -10,7 +9,7 @@
     "test:all": "npm test -ws --if-present"
   },
   "keywords": ["typescript", "workspace", "monorepo"],
-  "author": "Mitch Allen",
+  "author": "Mitch Allen <https://mitchallen.com>",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.3.3"

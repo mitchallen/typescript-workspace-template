@@ -1,0 +1,15 @@
+{
+    "main": "dist/index.js",
+    "types": "dist/index",
+    "files": [
+      "dist"
+    ],
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "clean": "rm -rf dist && rm tsconfig.build.tsbuildinfo || true",
+      "test": "cucumber-js"
+    },
+    "author": "Mitch Allen <https://mitchallen.com>",
+    "license": "MIT"
+  }
+  

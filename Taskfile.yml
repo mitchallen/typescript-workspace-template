@@ -85,11 +85,28 @@ tasks:
     desc: Add a workspace package - task add-package -- delta
     vars:
       TARGET_PACKAGE: '@{{.SCOPE}}/{{.CLI_ARGS}}'
+      TARGET_FOLDER: './packages/{{.CLI_ARGS}}'
+      TARGET_PKG_JSON: './packages/{{.CLI_ARGS}}/package.json'
+      TARGET_PKG_BKUP: './packages/{{.CLI_ARGS}}/package.bak'
+      MERGED_PKG_JSON: './packages/{{.CLI_ARGS}}/merged.json'
     cmds:
       - npm init --scope=@{{.SCOPE}} -w ./packages/{{.CLI_ARGS}} -y
       - npm install --save-dev @cucumber/cucumber ts-node @types/cucumber -w {{.TARGET_PACKAGE}}
       - npm install --save-dev chai @types/chai -w {{.TARGET_PACKAGE}}
-      # TODO - add steps to update scripts, etc
+      - jq -s '.[0] * .[1]' {{.TARGET_PKG_JSON}} templates/new.package.json > {{.MERGED_PKG_JSON}}
+      - cp {{.TARGET_PKG_JSON}} {{.TARGET_PKG_BKUP}}
+      - cp {{.MERGED_PKG_JSON}} {{.TARGET_PKG_JSON}}
+      - rm {{.TARGET_PKG_BKUP}}
+      - rm {{.MERGED_PKG_JSON}}
+      - cp ./templates/tsconfig.pkg.json {{.TARGET_FOLDER}}/tsconfig.json
+      - cp ./templates/tsconfig.build.json {{.TARGET_FOLDER}}
+      - cp ./templates/cucumber.js {{.TARGET_FOLDER}}
+      - mkdir -p {{.TARGET_FOLDER}}/src
+      - touch {{.TARGET_FOLDER}}/src/index.ts
+      - mkdir -p {{.TARGET_FOLDER}}/test/features
+      - touch {{.TARGET_FOLDER}}/test/features/smoke-test.feature
+      - mkdir -p {{.TARGET_FOLDER}}/test/step-definitions
+      - touch {{.TARGET_FOLDER}}/test/step-definitions/smoke-test.steps.ts
     silent: false
     # jq check added for future expansion
     preconditions:

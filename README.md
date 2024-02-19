@@ -73,9 +73,15 @@ That command will:
 
 ### GitHub Codespaces
 
+When you create a new codespace from this template, run this command in the terminal window:
+
+```sh
+npm install
+```
+
 To use the `task` command line in GitHub codespaces:
 
-* In the codespace terminal window, run this command (if not done by post attach command):
+* This will be installed autonatically when you create the codespace:
 ```sh
 npm install -g @go-task/cli
 ```

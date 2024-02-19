@@ -5,8 +5,12 @@
 
 version: '3'
 
+# Load .env variables automatically if a .env file exists
+dotenv: ['.env']
+
+# Define global variables here
 vars:
-  SCOPE: mitchallen # change for your npm scope
+  SCOPE: '{{default "mitchallen" .NPM_SCOPE}}'
 
 tasks:
 
@@ -17,8 +21,15 @@ tasks:
   default: task --list
 
   get-scope:
+    # task get-scope
+    # task get-scope -- delta
+    desc: show scope values
+    vars:
+      TARGET_PACKAGE: '@{{.SCOPE}}/{{.CLI_ARGS}}'
     cmds:
-      - echo "SCOPE = $SCOPE"
+      - echo "env NPM_SCOPE = {{.NPM_SCOPE}}"
+      - echo "var SCOPE = {{.SCOPE}}"
+      - echo "var TARGET_PACKAGE = {{.TARGET_PACKAGE}}"
     silent: true
 
   build-all:
@@ -72,10 +83,12 @@ tasks:
   add-package:
     # task add-package -- delta
     desc: Add a workspace package - task add-package -- delta
+    vars:
+      TARGET_PACKAGE: '@{{.SCOPE}}/{{.CLI_ARGS}}'
     cmds:
       - npm init --scope=@{{.SCOPE}} -w ./packages/{{.CLI_ARGS}} -y
-      - npm install --save-dev @cucumber/cucumber ts-node @types/cucumber -w @{{.SCOPE}}/{{.CLI_ARGS}}
-      - npm install --save-dev chai @types/chai -w @{{.SCOPE}}/{{.CLI_ARGS}}
+      - npm install --save-dev @cucumber/cucumber ts-node @types/cucumber -w {{.TARGET_PACKAGE}}
+      - npm install --save-dev chai @types/chai -w {{.TARGET_PACKAGE}}
       # TODO - add steps to update scripts, etc
     silent: false
     # jq check added for future expansion

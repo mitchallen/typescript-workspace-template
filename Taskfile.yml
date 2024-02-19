@@ -6,7 +6,6 @@
 version: '3'
 
 vars:
-  GREETING: Hello, World!
   SCOPE: mitchallen # change for your npm scope
 
 tasks:
@@ -17,9 +16,9 @@ tasks:
   # only list tasks with a desc
   default: task --list
 
-  hello:
+  get-scope:
     cmds:
-      - echo "{{.GREETING}}"
+      - echo "SCOPE = $SCOPE"
     silent: true
 
   build-all:

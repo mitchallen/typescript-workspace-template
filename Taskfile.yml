@@ -108,7 +108,6 @@ tasks:
       - mkdir -p {{.TARGET_FOLDER}}/test/step-definitions
       - touch {{.TARGET_FOLDER}}/test/step-definitions/smoke-test.steps.ts
     silent: false
-    # jq check added for future expansion
     preconditions:
       - sh: jq --version > /dev/null
         msg: "jq not installed"

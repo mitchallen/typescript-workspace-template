@@ -32,8 +32,15 @@ tasks:
       - echo "var TARGET_PACKAGE = {{.TARGET_PACKAGE}}"
     silent: true
 
+  demand-install:
+    preconditions:
+      - sh: test -d node_modules
+        msg: "run npm install first"
+    internal: true
+
   build-all:
     desc: Build all packages
+    deps: [demand-install]
     cmds:
       - echo "===== BUILD ALL ====="
       - npm run build:all
@@ -42,6 +49,7 @@ tasks:
   build-one:
     # task build-one -- alpha
     desc: Build one - task build-one -- alpha
+    deps: [demand-install]
     cmds:
       - npm run build -w @{{.SCOPE}}/{{.CLI_ARGS}}
     silent: false
@@ -76,6 +84,7 @@ tasks:
   test-one:
     # task test-one -- alpha
     desc: Test one - task test-one -- alpha
+    deps: [demand-install]
     cmds:
       - npm run test -w @{{.SCOPE}}/{{.CLI_ARGS}}
     silent: false
@@ -83,6 +92,7 @@ tasks:
   add-package:
     # task add-package -- delta
     desc: Add a workspace package - task add-package -- delta
+    deps: [demand-install]
     vars:
       TARGET_PACKAGE: '@{{.SCOPE}}/{{.CLI_ARGS}}'
       TARGET_FOLDER: './packages/{{.CLI_ARGS}}'

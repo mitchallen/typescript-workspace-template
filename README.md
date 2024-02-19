@@ -75,7 +75,7 @@ That command will:
 
 To use the `task` command line in GitHub codespaces:
 
-* In the codespace terminal window, run this command:
+* In the codespace terminal window, run this command (if not done by post attach command):
 ```sh
 npm install -g @go-task/cli
 ```

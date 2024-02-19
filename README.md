@@ -129,10 +129,16 @@ Due to dependency order, core has to come first:
 ### Init a modules
 
 ```sh
-npm init -w ./packages/alpha -y
+npm init -w ./packages/delta -y
 ```
 
-* copy package.json and tsconfig from other packages
+or to include your npm namespace (scope):
+
+```sh
+npm init --scope=@YOUR_SCOPE -w ./packages/delta -y
+```
+
+* copy values in package.json and tsconfig from other packages
 
 ### Dependency
 

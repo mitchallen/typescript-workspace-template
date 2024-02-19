@@ -30,10 +30,10 @@ tasks:
     silent: true
 
   build-one:
-    # task build-one -- @mitchallen/alpha
-    desc: Build one - task build-one -- @mitchallen/alpha
+    # task build-one -- alpha
+    desc: Build one - task build-one -- alpha
     cmds:
-      - npm run build -w {{.CLI_ARGS}}
+      - npm run build -w @{{.SCOPE}}/{{.CLI_ARGS}}
     silent: false
 
   clean-all:
@@ -44,10 +44,10 @@ tasks:
     silent: true
 
   clean-one:
-    # task clean-one -- @mitchallen/alpha
-    desc: Build clean - task clean-one -- @mitchallen/alpha
+    # task clean-one -- alpha
+    desc: Build clean - task clean-one -- alpha
     cmds:
-      - npm run clean -w {{.CLI_ARGS}}
+      - npm run clean -w @{{.SCOPE}}/{{.CLI_ARGS}}
     silent: false
 
   test-all:
@@ -64,10 +64,10 @@ tasks:
     silent: true
 
   test-one:
-    # task test-one -- @mitchallen/alpha
-    desc: Test one - task test-one -- @mitchallen/alpha
+    # task test-one -- alpha
+    desc: Test one - task test-one -- alpha
     cmds:
-      - npm run test -w {{.CLI_ARGS}}
+      - npm run test -w @{{.SCOPE}}/{{.CLI_ARGS}}
     silent: false
 
   add-package:
